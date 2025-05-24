@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>
+        🌍💚 Jiameng Studio
+    </title>
+    <meta name='description' content='Jiameng Yuan Potfolio for sustainable design' />
+    <meta name='author' content='Jiameng Yuan' />
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+    <meta property='og:title' content='Jiameng Yuan Studio' />
+    <meta property='og:description' content='Jiameng Yuan portfolio for sustainable design' />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content='https://jiamengy.github.io/' />
+    <meta property='og:image' content='<!-- ✏️ URL to preview image (1200×630) -->' />
+
+
+    <link rel='icon' href='assets/favicon.ico' />
+
+    <!-- ====== Fonts & Icons ====== -->
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap' rel='stylesheet' />
+
+    <!-- ====== Styles ====== -->
+    <style>
+        :root {
+            --clr-bg: #ffffff;
+            --clr-text: #1a1a1a;
+            --clr-primary: #2563eb;
+            --clr-secondary: #f97316;
+            --clr-border: #e5e7eb;
+            --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            background: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+
+        header {
+            border-bottom: 1px solid var(--clr-border);
+            background: #fafafa;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        main {
+            padding: 2rem 0;
+            min-height: 60vh;
+        }
+
+        footer {
+            border-top: 1px solid var(--clr-border);
+            background: #fafafa;
+            font-size: 0.875rem;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        /* Utility classes */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========= Header ========= -->
+    <header>
+        <div class='container'>
+            <h1 class='sr-only'><!-- ✏️ Site title for screen-readers --></h1>
+            <nav aria-label='Primary'>
+                <ul>
+                    <li><a href='#home'>Home</a></li>
+                    <li><a href='#about'>About</a></li>
+                    <li><a href='#projects'>Projects</a></li>
+                    <li><a href='#contact'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========= Main Content ========= -->
+    <main class='container'>
+        <!-- ✏️ Replace the sections below with your content -->
+        <section id='home'>
+            <h2>Welcome 👋</h2>
+            <p>This is a starter template for a static GitHub Pages site. Replace this text with your own content.</p>
+        </section>
+
+        <section id='about'>
+            <h2>About</h2>
+            <p>Add information about yourself or your project here.</p>
+        </section>
+
+        <section id='projects'>
+            <h2>Projects</h2>
+            <ul>
+                <li><a href='#'>Project One</a></li>
+                <li><a href='#'>Project Two</a></li>
+                <li><a href='#'>Project Three</a></li>
+            </ul>
+        </section>
+
+        <section id='contact'>
+            <h2>Contact</h2>
+            <p>
+                You can reach me via <a href='mailto:your@email.com'>email</a> or find me on
+                <a href='https://github.com/your-github-username'>GitHub</a>.
+            </p>
+        </section>
+    </main>
+
+    <!-- ========= Footer ========= -->
+    <footer>
+        <p>&copy; <span id='year'></span> <!-- ✏️ Your name --></p>
+    </footer>
+
+    <!-- ========= Scripts ========= -->
+    <script>
+        // Update the year in the footer automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
