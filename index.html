@@ -101,6 +101,50 @@
             border: 0;
         }
     </style>
+
+    <style>
+        /* Layout */
+        .video-section {
+            margin-block: 2rem;
+        }
+
+        .video-wrapper {
+            display: block;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Keeps 16:9 ratio even before video loads */
+            position: relative;
+        }
+
+        .responsive-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.12);
+        }
+
+        /* Respect reduced‑motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .responsive-video:not([controls]) {
+                animation: none !important;
+            }
+        }
+
+        /* Utility: visually hide element but keep it accessible */
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -122,18 +166,32 @@
     <!-- ========= Main Content ========= -->
     <main class='container'>
 
-        <section id="recycling-ceramic-video">
-            <video controls>
-                <source src="assets/videos/recycle-ceramic-video-print.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+        <section id="recycling-ceramic-video" class="video-section">
+            <!-- Visually hidden heading for screen-reader context -->
+            <h2 class="sr-only">Recycling Ceramic Materials—Step-by-Step</h2>
 
-                <picture>
-                    <source srcset="assets/videos/recycle-ceramic-video-print.webp" type="image/webp">
-                    <source srcset="assets/videos/recycle-ceramic-video-print.png" type="image/png">
-                    <img src="assets/recycle-ceramic-video-print.png" width="100%" height="100%" loading="lazy"
-                        decoding="async" alt="Recycling ceramic materials in a continuous loop">
-                </picture>
-            </video>
+            <figure class="video-wrapper">
+                <video id="ceramicVideo" class="responsive-video" width="1280" height="720" playsinline controls
+                    preload="metadata" poster="assets/videos/recycle-ceramic-video-print.webp"
+                    aria-describedby="recyclingVideoCaption">
+
+                    <!-- Modern high-efficiency formats first -->
+                    <source src="assets/videos/recycle-ceramic-video-print.avif" type="video/avif" />
+                    <source src="assets/videos/recycle-ceramic-video-print.webm" type="video/webm" />
+                    <source src="assets/videos/recycle-ceramic-video-print.mp4" type="video/mp4" />
+
+                    <!-- Optional captions/subtitles for accessibility -->
+                    <track default kind="captions" src="assets/videos/recycle-ceramic-video.en.vtt" srclang="en"
+                        label="English captions" />
+
+                    <!-- Fallback image for very old browsers -->
+                    <img src="assets/videos/recycle-ceramic-video-print.png"
+                        alt="Recycling ceramic materials in a continuous loop" />
+                </video>
+                <figcaption id="recyclingVideoCaption">A short loop demonstrating how ceramic waste is processed into
+                    new
+                    material.</figcaption>
+            </figure>
         </section>
 
         <!-- ✏️ Replace the sections below with your content -->
@@ -175,6 +233,29 @@
         // Update the year in the footer automatically
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+
+    <script>
+        (() => {
+            const video = document.getElementById('ceramicVideo');
+
+            /* Automatically pause/play based on viewport visibility
+               to save battery/CPU and limit distractions. */
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                            video.play().catch(() => {/* autoplay might be blocked; ignore */ });
+                        } else {
+                            video.pause();
+                        }
+                    });
+                },
+                { threshold: 0.5 }
+            );
+            observer.observe(video);
+        })();
+    </script>
+
 </body>
 
 </html>
